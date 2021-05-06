@@ -38,7 +38,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="?c=livre&m=modifier">Modifier un livre</a>
                     </li>
-                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="?c=abonne&m=liste">Abonné</a>
                     </li>
@@ -54,3 +56,10 @@
     </div>
 
     <div class="container">
+        <h1>Bienvenu à la biblioo</h1>
+        <?= $content ?>
+
+    </div>
+</body>
+
+</html>

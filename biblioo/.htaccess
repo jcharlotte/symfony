@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Règles de réécriture d'URL :
+# RewriteRule ^assets/(.*)/(.*)$ 	assets/$1/$2
+
+# RewriteRule ^(\w+)/?$              index.php?controleur=$1
+RewriteRule ^(\w+)/([A-Za-z]+)$  index.php?c=$1&m=$2
+RewriteRule ^(\w+)/(\w+)/(\d+)$  index.php?c=$1&m=$2&i=$3

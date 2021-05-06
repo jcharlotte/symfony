@@ -1,4 +1,10 @@
-<h1>Modifier le livre n°<?=$_GET["id"] ?></h1>
+<h2>
+    <?php if( !empty($livre) ) : ?>
+        Modifier le livre n°<?= $livre->getId() ?>
+    <?php else: ?>
+        Ajouter un livre
+    <?php endif ?>
+</h2>
 
 <form action="" method="post">
     <div class="form-group">
@@ -12,5 +18,5 @@
     </div>
 
     <button class="btn btn-primary">Enregistrer</button>
-    <a href="?controleur=livre&methode=liste" class="btn btn-danger">Annuler</a>
+    <a href="?c=livre&m=liste" class="btn btn-danger">Annuler</a>
 </form>

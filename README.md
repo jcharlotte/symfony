@@ -1,8 +1,8 @@
 # Découverte de Symfony (7 jours)
 
-*Ce projet présente les différentes étapes de ma découverte de Symfony.*
+*__Ce projet présente les différentes étapes de ma découverte de Symfony.__*
 
 ## Day 1
 
 
-- Rappels de POO/MVC (biblioo/)
+- Rappels de POO/MVC *En cours - quelques petits soucis non résolus*(biblioo/) 
