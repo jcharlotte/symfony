@@ -23,7 +23,7 @@ abstract class Bdd{
     public static function selectById($table, $id){
         $r = self::getDatabase()->query(" SELECT * FROM $table WHERE id = $id ");
         if ( $r->rowCount() == 1 ){
-            $classe = "Modeles\Entites\\" . ucfirst($table);
+            $classe = "Model\Entities\\" . ucfirst($table);
             $r->setFetchMode(PDO::FETCH_CLASS, $classe);
             return $r->fetch();
         }

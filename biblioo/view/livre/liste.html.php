@@ -17,7 +17,7 @@
                     <td><?= $livre["titre"] ?></td>
                     <td><?= $livre["auteur"] ?></td>
                     <td>
-                        <a href="?c=livre&m=modifier&i=<?= $livre["id"] ?>" >
+                        <a href="?c=livre&m=modifier&i=<?= $livre['id'] ?>" >
                             <i class="fa fa-edit"></i>
                         </a>
                     </td>
