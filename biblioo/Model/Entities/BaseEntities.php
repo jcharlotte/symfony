@@ -3,7 +3,7 @@
 namespace Model\Entities;
 
 class BaseEntities {
-    private $id;
+    protected $id;
 
     public function getId(){
 

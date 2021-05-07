@@ -2,6 +2,7 @@
 
 namespace Controller;
 use Model\Bdd;
+use Model\Entities\Livre;
 
 class LivreController extends BaseController
 {
@@ -15,8 +16,19 @@ class LivreController extends BaseController
 
     public function ajouter()
     {
+        $livre = new Livre;
 
-        return $this->render("livre/formulaire");
+        if ( $_POST ){
+            extract($_POST);
+            $livre->setTitre($titre);
+            $livre->setAuteur($auteur);
+            if ( Bdd::enregistre($livre) ){
+                return header("Location: ?c=livre&m=liste");
+            }
+
+        }
+
+        return $this->render("livre/formulaire", [ "livre" => $livre ]);
     }
 
     public function modifier($id)
