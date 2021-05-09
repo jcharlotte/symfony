@@ -32,6 +32,56 @@ class TestController extends AbstractController
         $nombre = 45;
         $prenom = "Roger";
 
-        return $this->render("base.html.twig", [ "nombre" => $nombre, "prenom" => $prenom ]);
+        return $this->render("base.html.twig", ["nombre" => $nombre, "prenom" => $prenom]);
     }
+
+    /**
+     * @Route("/test/heritage")
+     */
+    public function heritage()
+    {
+        return $this->render("test/heritage.html.twig");
+    }
+
+    /**
+     * @Route("/test/transitif")
+     */
+    public function transitif()
+    {
+        return $this->render("test/transitif.html.twig");
+    }
+
+    /**
+     * @Route("/test/tableau")
+     */
+    public function tableau()
+    {
+        $tab = ["jour" => "07", "mois" => "mai", "annee" => 2021];
+        return $this->render("test/variables.html.twig", [
+            "tableau" => $tab,
+            "tableau2" => [45, "test", true],
+            "nombre" => 5
+        ]);
+    }
+
+    /**
+     * @Route("/test/salutation/{prenom}")
+     */
+    public function salutation($prenom)
+    {
+        $nombre = 45;
+        return $this->render("test/salutation.html.twig", ["prenom" => $prenom, "nombre" => $nombre]);
+        // Exercice : Créer la vue et afficher dans la balise h1 "Bonjour prenom"
+    }
+
+    /** 
+     * Exercice : 
+     * créez une nouvelle route qui va prendre
+     *  2 paramètres dans l'url et qui va affichez la 
+     * valeur de l'addition, la multiplication, la soustraction
+     * et la division des 2 nombres passés en paramètres
+     * 
+     * Si le 2ième paramètres est 0, il ne faut pas afficher
+     * le résultat de la division (affichez "Division par 0 impossible")
+     */
 }

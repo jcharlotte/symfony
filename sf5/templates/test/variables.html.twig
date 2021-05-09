@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{# Tableau associatif #}
+	<ul>
+		<li>Jour :
+			{{ tableau["jour"] }}
+		</li>
+		<li>Mois :
+			{{ tableau.mois }}
+		</li>
+		<li>Année :
+			{{ tableau.annee }}
+		</li>
+	</ul>
+
+
+	{# Tableau avec indices numériques #}
+	<ul>
+		<li>{{ tableau2[0] }}</li>
+		<li>{{ tableau2[1] }}</li>
+		<li>{{ tableau2[2] }}</li>
+	</ul>
+
+	{# Boucle FOR #}
+
+	{% for i in 0..2 %}
+		{{ tableau2[i] }}
+	{% endfor %}
+
+	<ul>
+		{% for indice, valeur in tableau %}
+			<li>
+				{{ indice }}
+				:
+				{{ valeur }}
+			</li>
+		{% endfor %}
+	</ul>
+
+	{# IF #}
+	{% if nombre < 2 %}
+		Le nombre est inférieur à 2
+	{% elseif nombre < 10 %}
+		Le nombre est compris entre 2 et 9
+	{% else %}
+		Le nombre est supérieur à 10
+	{% endif %}
+
+	{# TESTS #}
+	{% if chaine is defined %}
+		{{ chaine }}
+	{% endif %}
+
+	{# Pour utiliser is empty, il faut d'abord vérifier si la variable est définie. On ne peut pas faire de test empty sur une vériable qui n'est pas définie #}
+	{% if chaine is defined and chaine is empty %}
+		La chaîne est vide.
+	{% endif %}
+
+	{# FILTRES #}
+	{{ tableau.mois|capitalize }}
+
+{% endblock %}
