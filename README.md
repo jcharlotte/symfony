@@ -25,13 +25,13 @@
     - symfony console make:controller
     - composer require twig (et non pas wig!)
 
-## *Travail perso*
+### *Travail perso*
 - Recherche concernant l'exercice2 (TestController.php)
 
 
 ## __Day 3__
 
-## *Cours*
+### *Cours*
 - Correction des exercices 1 et 2 (TestController.php)
 - Connexion BDD (.env)
 - Création d'entités
