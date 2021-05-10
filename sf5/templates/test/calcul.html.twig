@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<p>{{nb1}} + {{nb2}} = {{nb1 + nb2}}</p>
+<p>{{nb2}} - {{nb1}} = {{nb2 - nb1}}</p>
+<p>{{nb1}} x {{nb2}} = {{nb1 * nb2}}</p>
+{% if nb2 == 0 %}
+    <p>Divison par 0 impossible</p>
+{% else %}
+    <p>{{nb1 / nb2}}</p>
+{% endif %}
+{% endblock %}

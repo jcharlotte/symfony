@@ -6,12 +6,12 @@
 
 ## __Day 1__
 
- 
 ### *Cours*
 - Rappels de POO/MVC *En cours - quelques petits soucis non résolus*(biblioo/)
 
 ### *Travail perso*
 - Issues sur biblioo/ réglées
+
 
 ## __Day 2__
 
@@ -24,3 +24,20 @@
     - require annotations
     - symfony console make:controller
     - composer require twig (et non pas wig!)
+
+## *Travail perso*
+- Recherche concernant l'exercice2 (TestController.php)
+
+
+## __Day 3__
+
+## *Cours*
+- Correction des exercices 1 et 2 (TestController.php)
+- Connexion BDD (.env)
+- Création d'entités
+    - symfony console doctrine:database:create
+    - symfony console make:entity
+    - symfony console make:migration
+    - symfony console doctrine:migrations:migrate
+- Requête d'insertion
+- Requête de sélection

@@ -64,18 +64,20 @@ class TestController extends AbstractController
         ]);
     }
 
+
+    // @Route("/test/salutation/{prenom?}") Le "?" permet de rendre facultative l'argument qui le précéde
     /**
-     * @Route("/test/salutation/{prenom}")
+     * @Route("/test/salutation/{prenom?}")
      */
     public function salutation($prenom)
     {
-        $nombre = 45;
-        return $this->render("test/salutation.html.twig", ["prenom" => $prenom, "nombre" => $nombre]);
-        // Exercice : Créer la vue et afficher dans la balise h1 "Bonjour prenom"
+        $prenom = $prenom ?? "inconnu";
+        return $this->render("test/salutation.html.twig", ["prenom" => $prenom]);
+        // Exercice 1 : Créer la vue et afficher dans la balise h1 "Bonjour prenom"
     }
 
     /** 
-     * Exercice : 
+     * Exercice 2 : 
      * créez une nouvelle route qui va prendre
      *  2 paramètres dans l'url et qui va affichez la 
      * valeur de l'addition, la multiplication, la soustraction
@@ -84,4 +86,12 @@ class TestController extends AbstractController
      * Si le 2ième paramètres est 0, il ne faut pas afficher
      * le résultat de la division (affichez "Division par 0 impossible")
      */
+
+    /**
+     * @Route("/test/calcul/{nb1?}-{nb2?}", name="test_calcul",  requirements={"nb1"="[0-9]+", "nb2"="[0-9]+"})
+     */
+    public function calculs($nb1, $nb2)
+    {
+        return $this->render("test/calcul.html.twig", ["nb1" => $nb1, "nb2" => $nb2]);
+    }
 }
