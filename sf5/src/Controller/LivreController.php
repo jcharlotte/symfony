@@ -10,10 +10,19 @@ use App\Entity\Livre;
 use App\Form\LivreType;
 use Doctrine\ORM\EntityManagerInterface as EntityManager;
 use App\Repository\LivreRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+
+/**
+ * @Route("/admin")
+ * Toutes les routes
+ */
 class LivreController extends AbstractController
 {
-    #[Route('/livre', name: 'livre')]
+    /**
+     * @Route("/livre", name="livre")
+     * @IsGranted("ROLE_ADMIN")
+     */
     public function index(LivreRepository $livreRepository): Response
     {
         /* Pour récupérer la liste de tous les lires enregistés en BDD, je vais utiliser la classe LivreRepository.
@@ -77,10 +86,45 @@ class LivreController extends AbstractController
         /* handleRequest(): permet à la variable $formLivre de gérer les informations envoyé par le navigateur */
         $formLivre->handleRequest($request);
         if ($formLivre->isSubmitted() && $formLivre->isValid()) {
-            $em->persist($livre);
+            $em->persist($livre);   // Prépare la requête
+            $em->flush();           // Insère la requête en bdd
+            return $this->redirectToRoute("livre");
+        }
+        return $this->render("livre/form.html.twig", ['form' => $formLivre->createView()]);
+    }
+
+    /**
+     * @Route("/livre/modifier/{id}", name="livre_modifier", requirements={"id"="\d+"})
+     */
+    public function modifier(EntityManager $em, Request $request, LivreRepository $lr,  $id) // EntityManager pour la modification en bdd et Request pour récupérer les infos du formulaire
+    {
+        $livre = $lr->find($id); // la méthode find() permet de récupérer un enregistrement avec son identifiant
+        $formLivre = $this->createForm(LivreType::class, $livre);
+
+        $formLivre->handleRequest($request);
+        if ($formLivre->isSubmitted() && $formLivre->isValid()) {
+            // $em->persist($livre);
+            // Pour modifier un enregistrement, pas besoin d'utuliser la méthode persist() de l'EntityManager
+            // Toutes les variables entités qui ont un id non null vont être enregistrées en bdd quand la méthode flush sera appelée
             $em->flush();
             return $this->redirectToRoute("livre");
         }
         return $this->render("livre/form.html.twig", ['form' => $formLivre->createView()]);
+    }
+
+    /**
+     * @Route("/livre/supprimer/{id}", name="livre_supprimer", requirements={"id"="\d+"})
+     * 
+     * En passant un objet Livre comme paramètre de la méthode supprimer(), $livre sera récupéré dans la base de données selon la valeur de {id} passé dans l'URL de la route
+     */
+    public function supprimer(EntityManager $em, Request $request, Livre $livre)
+    {
+        if ($request->isMethod("POST")) {
+            //La méthode remove() prépare la requête DELETE
+            $em->remove($livre);
+            $em->flush();
+            return $this->redirectToRoute("livre");
+        }
+        return $this->render("livre/supprimer.html.twig", ["livre" => $livre]);
     }
 }

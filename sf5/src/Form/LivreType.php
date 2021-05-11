@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Length;
-
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class LivreType extends AbstractType
 {
@@ -23,12 +23,17 @@ class LivreType extends AbstractType
                         "minMessage" => "Le titre doit avoir au moins 2 caractères",
                         "max" => 50,
                         "maxMessage" => "Le titre ne peut pas contenir plus de 50 caractères"
-                    ])
+                    ]),
+
+                    new NotBlank(["message" => "Le titre ne peut pas être vide"])
                 ],
+
                 "attr" => [
                     "placeholder" => "Titre du livre"
                 ]
             ])
+
+
             ->add('auteur', TextType::class, [
                 "attr" => [
                     "placeholder" => "Auteur"

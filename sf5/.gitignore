@@ -7,4 +7,5 @@
 /public/bundles/
 /var/
 /vendor/
+lecture.md
 ###< symfony/framework-bundle ###

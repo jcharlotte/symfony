@@ -20,13 +20,17 @@
 			{#{{ encore_entry_script_tags('app') }}#}
 		{% endblock %}
 	</head>
+
+
 	<body>
-		<h1>
-			{% block h1 %}
-				Bienvenue à la bibliothéque
-			{% endblock %}
-		</h1>
+		<div class="container-fluid">{{ include("menu.html.twig") }}</div>
 		<div class="container">
+			
+			<h1>
+				{% block h1 %}
+					Bienvenue à la bibliothèque
+				{% endblock %}
+			</h1>
 			{% block body %}
 				page d'accueil
 				<p>Nombre =
@@ -38,11 +42,11 @@
 					{{ prenom is defined ? prenom : "" }}</p>
 
 			{% endblock %}
+			{% block footer %}
+				<br>
+				<p>Ceci est le footer</p>
+			{% endblock %}
 		</div>
-		{% block footer %}
-			<br>
-			<p>Ceci est le footer</p>
-		{% endblock %}
 	</body>
 </html>
 {# COMMENTAIRES

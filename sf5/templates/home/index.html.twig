@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<div class="row">
+	    {% for livre in livres %}
+    		{{ include("livre/vignette.html.twig" ) }}
+    	{% endfor %}
+	</div>
+{% endblock %}

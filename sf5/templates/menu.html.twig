@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{path("home")}}">Bibliothéque</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        {# Dans les fichiers twig, on peut accéder à une variable global 'app'. 
+        app.user : Si app.user est non null, contient un objet user (classe Abonne) qui contient les informations de l'utilisateur connecté #}
+
+        {% if app.user %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path("app_logout") }}">Se déconnecter</a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ path("app_login") }}">Se connecter</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path("app_register") }}">S'inscrire</a>
+        </li>
+        {% endif %}
+
+        {# la fonction is_granted() permet de vérifier si l'utilisateur connecté a le rôle passé en paramètre #}
+        {% if is_granted("ROLE_ADMIN") %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Livres
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ path("livre") }}">Liste</a>
+            <a class="dropdown-item" href="{{ path("livre_nouveau") }}">Nouveau livre</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"> - </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>

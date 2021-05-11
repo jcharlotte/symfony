@@ -41,3 +41,24 @@
     - symfony console doctrine:migrations:migrate
 - Requête d'insertion
 - Requête de sélection
+
+
+## __Day4__
+
+### *Cours*
+- Requête de modification
+- Requête de suppression
+- Ajout d'un menu
+- Création de l'entité utilisateur
+    - composer require security
+    - symfony console make:user
+    - symfony console make:entity Abonne (pour modifier l'entité)
+    - symfony console make:migration
+    - symfony console doctrine:migration:migrate
+    - symfony console make:auth
+    - symfony console make:registration-form
+- Configuration de la connexion utilisateur
+- Installation d'un outil de debug
+    - composer require debug --dev
+- Configuration de l'administrateur
+- Configuration des accès aux pages d'administration
