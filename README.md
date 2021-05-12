@@ -43,7 +43,7 @@
 - Requête de sélection
 
 
-## __Day4__
+## __Day 4__
 
 ### *Cours*
 - Requête de modification
@@ -62,3 +62,19 @@
     - composer require debug --dev
 - Configuration de l'administrateur
 - Configuration des accès aux pages d'administration
+
+
+## __DAY 5__ 
+
+### *Cours*
+- Utilisation du CRUD/symfony
+    - symfony console make:crud
+- Création de l'entité categorie
+    - configuration de la Foreign key la reliant à la table livre
+
+
+
+## __Weekend__
+
+### *Travail perso*
+- composer require webpack

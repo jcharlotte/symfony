@@ -25,7 +25,14 @@
 	<body>
 		<div class="container-fluid">{{ include("menu.html.twig") }}</div>
 		<div class="container">
-			
+			{# pour accèder aux messages flash, j'utilise la variable app.flashes #}
+
+			{% for type, messages in app.flashes %}
+				{% for msg in messages %}
+					<div class="alert alert-{{type}}">{{ msg }}</div>
+				{% endfor %}
+			{% endfor %}
+
 			<h1>
 				{% block h1 %}
 					Bienvenue à la bibliothèque
@@ -44,7 +51,7 @@
 			{% endblock %}
 			{% block footer %}
 				<br>
-				<p>Ceci est le footer</p>
+				
 			{% endblock %}
 		</div>
 	</body>

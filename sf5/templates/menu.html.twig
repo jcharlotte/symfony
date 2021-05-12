@@ -9,9 +9,13 @@
         {# Dans les fichiers twig, on peut accéder à une variable global 'app'. 
         app.user : Si app.user est non null, contient un objet user (classe Abonne) qui contient les informations de l'utilisateur connecté #}
 
-        {% if app.user %}
+        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+        {#{% if app.user %}#}
         <li class="nav-item">
-          <a class="nav-link" href="{{ path("app_logout") }}">Se déconnecter</a>
+          <a class="nav-link" href="#"><i class="fa fa-user"> </i> {{ app.user.username|capitalize }}</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path("app_logout") }}"><i class="fa fa-sign-out-alt"></i> Se déconnecter</a>
+        </li>
         </li>
         {% else %}
         <li class="nav-item active">
@@ -21,6 +25,8 @@
           <a class="nav-link" href="{{ path("app_register") }}">S'inscrire</a>
         </li>
         {% endif %}
+
+        
 
         {# la fonction is_granted() permet de vérifier si l'utilisateur connecté a le rôle passé en paramètre #}
         {% if is_granted("ROLE_ADMIN") %}
@@ -33,8 +39,23 @@
             <a class="dropdown-item" href="{{ path("livre_nouveau") }}">Nouveau livre</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"> - </a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Abonne
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ path("abonne_index") }}">Liste</a>
+            <a class="dropdown-item" href="{{ path("abonne_new") }}">Nouvel abonné</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Catégories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ path("categorie_index") }}">Liste</a>
+            <a class="dropdown-item" href="{{ path("categorie_new") }}">Nouvelle catégorie</a>
+          </div>
         </li>
         {% endif %}
       </ul>

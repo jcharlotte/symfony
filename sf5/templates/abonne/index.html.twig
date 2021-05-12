@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonne index
+{% endblock %}
+
+{% block body %}
+	<h1>Abonne index</h1>
+
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Pseudo</th>
+				<th>Roles</th>
+				<th>Prenom</th>
+				<th>Nom</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for abonne in abonnes %}
+				<tr>
+					<td>{{ abonne.id }}</td>
+					<td>{{ abonne.pseudo }}</td>
+
+					<td>
+                        {% set text = "" %}
+					    {% for role in abonne.roles %}
+    						{% if role == "ROLE_ADMIN"%}
+                                {% set text = text ~ (text ? "," : "")~ "Directeur" %}
+    						{% elseif role == "ROLE_BIBLIO" %}
+                                {% set text = text ~ (text ? "," : "")~ "Bibliothécaire" %}
+    						{% elseif role == "ROLE_LECTEUR" %}
+                                {% set text = text ~ (text ? "," : "")~ "Lecteur" %}
+    						{% endif %}
+    					{% endfor %}
+                        {{ text }}
+					</td>
+
+					<td>{{ abonne.prenom }}</td>
+					<td>{{ abonne.nom }}</td>
+					<td>
+						<a href="{{ path('abonne_show', {'id': abonne.id}) }}">
+							<i class="fa fa-eye"></i>
+						</a>
+						<a href="{{ path('abonne_edit', {'id': abonne.id}) }}">
+							<i class="fa fa-edit"></i>
+						</a>
+						<a href="{{ path('abonne_delete', {'id': abonne.id}) }}">
+							<i class="fa fa-trash"></i>
+						</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('abonne_new') }}" class="btn btn-success">Create new</a>
+{% endblock %}

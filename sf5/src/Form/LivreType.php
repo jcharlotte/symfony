@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Categorie;
 use App\Entity\Livre;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -39,6 +41,13 @@ class LivreType extends AbstractType
                     "placeholder" => "Auteur"
                 ]
             ])
+
+            ->add("categorie", EntityType::class, [
+                "class" => Categorie::class,
+                "choice_label" => "titre", // la propriété de la classe Categorie qui va être affichée dans le select
+                "required" => false
+            ])
+
             ->add("enregistrer", SubmitType::class, [
                 "attr" => [
                     "class" => "btn btn-secondary"
