@@ -76,5 +76,13 @@
 
 ## __Weekend__
 
+1. Donc vous allez créer une entité Emprunt avec une relation ManyToOne pour les entités Abonne et Livre. Attention à bien choisir le bon type pour chaque propriété.
+2. Vous devez créer toutes les routes pour le CRUD sur cette table. Ces routes ne seront accessibles qu’aux abonnés ayant le ROLE_ADMIN ou le ROLE_BIBLIO
+3. Vous créez un contrôleur Profil pour toutes les routes concernant les abonnés ayant le ROLE_LECTEUR. Il y aura une route pour afficher le profil de l’abonné (ces informations) ainsi que tous les emprunts qu’il a déjà effectué.
+Lorsque que l’on se connecte, on sera redirigé automatiquement vers cette route.
+4. Toujours dans le même contrôleur, vous allez rajouter une route pour pouvoir emprunter un livre. Cette route ne sera accessible que si l’on est connecté.
+Sur chaque vignette de livre, vous mettez un lien pour pouvoir emprunter un livre quand on est connecté. Ce lien redirige vers la route que vous venez de créer. Ce lien n’est affiché que si on est connecté avec le ROLE_LECTEUR.
+
 ### *Travail perso*
 - composer require webpack
+- 1, 2 et 3 -> 50%
