@@ -92,4 +92,13 @@ Sur chaque vignette de livre, vous mettez un lien pour pouvoir emprunter un livr
 
 ### *Cours*
 - Correction exercices du weekend
-- 
+- installation de yarn
+    - composer require encore
+    - yarn install
+    - yarn add node-sass
+    - yarn add sass-loader
+    - yarn add bootstrap
+    - yarn add jquery
+    - yarn add popper.js
+    - yarn add @fortawesome/fontawesome-free
+    - yarn encore dev
