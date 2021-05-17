@@ -5,12 +5,14 @@
 {% block body %}
     <h1>Emprunt index</h1>
 
-    <table class="table">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Date_emprunt</th>
-                <th>Date_retour</th>
+                <th>Date emprunt</th>
+                <th>Date retour</th>
+                <th>Titre</th>
+                <th>Emprunteur</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,9 +22,12 @@
                 <td>{{ emprunt.id }}</td>
                 <td>{{ emprunt.dateEmprunt ? emprunt.dateEmprunt|date('Y-m-d') : '' }}</td>
                 <td>{{ emprunt.dateRetour ? emprunt.dateRetour|date('Y-m-d') : '' }}</td>
+                <td>{{ emprunt.livre.titre }}</td>
+                <td> {{ emprunt.abonne.pseudo }}</td>
                 <td>
-                    <a href="{{ path('emprunt_show', {'id': emprunt.id}) }}">show</a>
-                    <a href="{{ path('emprunt_edit', {'id': emprunt.id}) }}">edit</a>
+                    <a href="{{ path('emprunt_show', {'id': emprunt.id}) }}"><i class="fa fa-eye"></i></a>
+                    <a href="{{ path('emprunt_edit', {'id': emprunt.id}) }}"><i class="fa fa-edit"></i></a>
+                    <a href="{{ path('abonne_delete', {'id': emprunt.id}) }}"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +38,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('emprunt_new') }}">Create new</a>
+    <a href="{{ path('emprunt_new') }}" class="btn btn-success">Create new</a>
 {% endblock %}

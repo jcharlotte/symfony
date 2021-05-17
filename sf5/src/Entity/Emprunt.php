@@ -31,13 +31,14 @@ class Emprunt
      * @ORM\ManyToOne(targetEntity=Livre::class, inversedBy="emprunts")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $livre_id;
+    private $livre;
 
     /**
      * @ORM\ManyToOne(targetEntity=Abonne::class, inversedBy="emprunts")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $abonne_id;
+    private $abonne;
+
 
     public function getId(): ?int
     {
@@ -68,27 +69,33 @@ class Emprunt
         return $this;
     }
 
-    public function getLivreId(): ?Livre
+    public function getLivre(): ?Livre
     {
-        return $this->livre_id;
+        return $this->livre;
     }
 
-    public function setLivreId(?Livre $livre_id): self
+    public function setLivre(?Livre $livre): self
     {
-        $this->livre_id = $livre_id;
+        $this->livre = $livre;
 
         return $this;
     }
 
-    public function getAbonneId(): ?Abonne
+    public function getAbonne(): ?Abonne
     {
-        return $this->abonne_id;
+        return $this->abonne;
     }
 
-    public function setAbonneId(?Abonne $abonne_id): self
+    public function setAbonne(?Abonne $abonne): self
     {
-        $this->abonne_id = $abonne_id;
+        $this->abonne = $abonne;
 
         return $this;
     }
+
+    public function __construct()
+    {
+        $this->date_emprunt = new \DateTime('now');
+    }
+
 }

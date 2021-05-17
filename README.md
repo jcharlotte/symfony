@@ -86,3 +86,10 @@ Sur chaque vignette de livre, vous mettez un lien pour pouvoir emprunter un livr
 ### *Travail perso*
 - composer require webpack
 - 1, 2 et 3 -> 50%
+
+
+## __DAY 6__
+
+### *Cours*
+- Correction exercices du weekend
+- 

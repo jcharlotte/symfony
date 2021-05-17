@@ -35,9 +35,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        # - { path: ^/admin/empunt, roles: ROLE_BIBLIO } -> penser à hiérarchiser, sinon le routeur s'arrêtera à la première route qui match
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/biblio, roles: ROLE_BIBLIO }
-        - { path: ^/profil, roles: ROLE_USER }
+        - { path: ^/profil, roles: ROLE_LECTEUR }
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_BIBLIO, ROLE_LECTEUR     # les users qui ont le ROLE_ADMIN ont aussi les droits de ROLE_BIBLIO et ROLE_LECTUER

@@ -10,9 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/biblio/emprunt")
- */
+#[Route('/biblio/emprunt')]
 class EmpruntController extends AbstractController
 {
     #[Route('/', name: 'emprunt_index', methods: ['GET'])]

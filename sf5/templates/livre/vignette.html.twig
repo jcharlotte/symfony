@@ -1,8 +1,8 @@
 <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="" alt="Card image cap">
+    {# <img class="card-img-top" src="" alt="Card image cap"> #}
     <div class="card-body">
       <h5 class="card-title">{{ livre.titre }}</h5>
       <p class="card-text">{{ livre.auteur }}</p>
-      <a href="#" class="btn btn-primary">Voir plus</a>
+      <a href="{{ path('profil_emprunter', {id: livre.id}) }}" class="btn btn-success">Emprunter</a>
     </div>
   </div>

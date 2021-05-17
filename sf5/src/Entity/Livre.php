@@ -35,13 +35,15 @@ class Livre
     private $categorie;
 
     /**
-     * @ORM\OneToMany(targetEntity=Emprunt::class, mappedBy="livre_id")
+     * @ORM\OneToMany(targetEntity=Emprunt::class, mappedBy="livre", orphanRemoval=true)
      */
     private $emprunts;
+
 
     public function __construct()
     {
         $this->emprunts = new ArrayCollection();
+        $this->abonne = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,6 +111,36 @@ class Livre
             // set the owning side to null (unless already changed)
             if ($emprunt->getLivreId() === $this) {
                 $emprunt->setLivreId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Emprunt[]
+     */
+    public function getAbonne(): Collection
+    {
+        return $this->abonne;
+    }
+
+    public function addAbonne(Emprunt $abonne): self
+    {
+        if (!$this->abonne->contains($abonne)) {
+            $this->abonne[] = $abonne;
+            $abonne->setLivre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAbonne(Emprunt $abonne): self
+    {
+        if ($this->abonne->removeElement($abonne)) {
+            // set the owning side to null (unless already changed)
+            if ($abonne->getLivre() === $this) {
+                $abonne->setLivre(null);
             }
         }
 

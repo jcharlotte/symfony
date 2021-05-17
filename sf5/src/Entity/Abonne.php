@@ -49,7 +49,7 @@ class Abonne implements UserInterface
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Emprunt::class, mappedBy="abonne_id")
+     * @ORM\OneToMany(targetEntity=Emprunt::class, mappedBy="abonne", orphanRemoval=true)
      */
     private $emprunts;
 
